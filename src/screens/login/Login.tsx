@@ -5,7 +5,7 @@ import logo from '../../logo.svg';
 class Login extends Component {
   render() {
     return (
-      <form className="LoginPage">
+      <form className="LoginPage" action="/home" method="GET">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
