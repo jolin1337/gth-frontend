@@ -1,0 +1,64 @@
+.mainDivContainer{
+	width: 50%;
+	text-align: center;
+}
+
+.mainDivContainer .homeLinks , .plannedActivities{
+	border:1px solid white;
+	margin: 2em;
+	padding: 20px 5px;
+	width: 50%;
+	display: inline-block;
+}
+
+.mainDivContainer .homeLinks{
+	margin: 1em;
+}
+
+.homeLinks{
+	color: white;
+	text-decoration: none;
+}
+
+ul{
+	text-align: left;
+
+}
+
+@media only screen and (max-width: 600px) {
+	.mainDivContainer{
+		width: 100%;
+	}
+
+	.mainDivContainer .homeLinks , .plannedActivities{
+		width: 90vw;
+		margin: 1em;
+		padding: 20px 0px;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.mainDivContainer{
+		width: 80%;
+	}
+
+	.mainDivContainer .homeLinks , .plannedActivities{
+		width: 70vw;
+		margin: 1em;
+		padding: 20px 0px;
+	}
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+} 
+
