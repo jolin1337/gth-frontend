@@ -1,0 +1,17 @@
+.bottomDiv{
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px;
+	background-color: #9bdcff;
+
+}
+
+.bottomDiv img{
+	margin-left: 1em;
+	margin-right: 1em;
+
+}
