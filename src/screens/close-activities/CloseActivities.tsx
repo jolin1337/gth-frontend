@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Login.css";
-import logo from "../../logo.svg";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import { inject, observer } from "mobx-react";
 import { ActivityStore } from "../../stores/ActivityStore";
 
@@ -9,12 +9,11 @@ interface Props {
 }
 @inject("activityStore", "activityStore")
 @observer
-class Login extends Component<Props> {
+class CloseActivities extends Component <Props> {
   componentDidMount() {
     const { loadActivities } = this.props.activityStore!;
     loadActivities();
   }
-
   renderAktivities = () => {
     const { isLoading, activities } = this.props.activityStore!;
     if (isLoading || !activities.length) return <p>Laddar. ..</p>;
@@ -28,21 +27,11 @@ class Login extends Component<Props> {
   };
   render() {
     return (
-      <form className="LoginPage" action="/home" method="GET">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-        <label htmlFor="name">Name:</label>
-        <input required type="text" id="name" />
-        <label htmlFor="password">Password:</label>
-        <input required type="password" id="password" />
-        <input type="submit" value="Login" />
-        <a href="#" className="App-link Register-account">
-          Register account
-        </a>
-      </form>
+      <div>
+        {this.renderAktivities()}
+      </div>
     );
   }
 }
 
-export default Login;
+export default CloseActivities;

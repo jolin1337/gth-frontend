@@ -5,6 +5,7 @@ import { Provider } from "mobx-react";
 import { ActivityStore } from "./stores";
 
 import CreateActivity from './screens/create-activity';
+import CloseActivities from './screens/close-activities';
 import Login from "./screens/login";
 import Home from "./screens/home/Home";
 import "./App.css";
@@ -22,6 +23,7 @@ class App extends Component {
               <Route path="/" exact component={Login} />
               <Route path="/home" component={Home} />
               <Route path="/activity/create" exact component={CreateActivity} />
+              <Route path="/activity" exact component={CloseActivities} />
             </Switch>
           </Provider>
           </Router>
