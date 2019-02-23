@@ -10,6 +10,11 @@ interface State {
   value: string;
   options: any[];
 }
+
+const styles = {
+  option: (styles : object) => ({ ...styles, color: "black" })
+};
+
 class Map extends Component <Props, State> {
   constructor (props : Props) {
     super(props);
@@ -56,7 +61,7 @@ class Map extends Component <Props, State> {
       <React.Fragment>
         <label htmlFor="meetingPoint">Meeting point</label>
         <Creatable id="meetingPoint" value={this.state.value} onInputChange={this.queryMeetingPoint} onChange={this.updateValue}
-          options={this.state.options} />
+          options={this.state.options} styles={styles} />
       </React.Fragment>
     );
   }
