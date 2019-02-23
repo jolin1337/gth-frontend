@@ -22,7 +22,12 @@ class CloseActivities extends Component<Props> {
       <ul>
         {this.props.activityStore!.activities.map((it: any, idx: number) => (
           <li key={idx}>
-            <Link to={"/activity/" + it.id}>{it.name}</Link>
+            <Link
+              to={"/activity/" + it.id}
+              style={{ background: "white", textDecoration: "none" }}
+            >
+              {it.name} med {it.attendees} personer
+            </Link>
           </li>
         ))}
       </ul>
