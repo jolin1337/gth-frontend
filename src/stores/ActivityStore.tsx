@@ -10,12 +10,15 @@ class ActivityStore {
   @action
   public loadActivities = () => {
     this.isLoading = true;
-    setTimeout(this.setActivities, 1000);
+    fetch('http://localhost:3007/api/activities').then((a : any) => a.json())
+    .then((activities : any) => {
+      this.setActivities(activities);
+    });
   };
 
   @action
-  public setActivities = () => {
-    this.activities = [1, 3, 4];
+  public setActivities = (activities : any) => {
+    this.activities = activities;
     this.isLoading = false;
   };
 }

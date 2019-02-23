@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { inject, observer } from "mobx-react";
 import { ActivityStore } from "../../stores/ActivityStore";
@@ -20,7 +21,7 @@ class CloseActivities extends Component <Props> {
     return (
       <ul>
         {this.props.activityStore!.activities.map((it : any, idx : number) => (
-          <li key={idx}>aktivitet {it}</li>
+          <li key={idx}><Link to={"/activity/" + it.id}>{it.name}</Link></li>
         ))}
       </ul>
     );
