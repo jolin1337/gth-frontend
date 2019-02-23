@@ -24,7 +24,7 @@ class ActivityStore {
 
   @action
   public addActivity = async (activity: any) => {
-    const addedActivity = await fetch("https://localhost:3007/activity", {
+    const addedActivity = await fetch("https://localhost:3007/api/activity", {
       method: "POST",
       headers: {
         Accept: "application/json",
