@@ -1,0 +1,24 @@
+{
+  "activityTypes": [
+    {
+      "value": "fotboll",
+      "label": "Soccer"
+    },
+    {
+      "value": "running",
+      "label": "Running"
+    },
+    {
+      "value": "tennis",
+      "label": "Tennis"
+    },
+    {
+      "value": "cooking",
+      "label": "Cooking"
+    },
+    {
+      "value": "board_games",
+      "label": "Board games"
+    }
+  ]
+}

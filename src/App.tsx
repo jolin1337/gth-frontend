@@ -4,23 +4,28 @@ import { configure } from "mobx";
 import { Provider } from "mobx-react";
 import { ActivityStore } from "./stores";
 
+import CreateActivity from './screens/create-activity';
 import Login from "./screens/login";
 import Home from "./screens/home/Home";
 import "./App.css";
+
 configure({ enforceActions: "observed" });
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
+        <div className="App-container">
+          <Router>
           <Provider activityStore={ActivityStore}>
             <Switch>
               <Route path="/" exact component={Login} />
               <Route path="/home" component={Home} />
+              <Route path="/activity/create" exact component={CreateActivity} />
             </Switch>
           </Provider>
-        </Router>
+          </Router>
+        </div>
       </div>
     );
   }

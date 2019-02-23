@@ -7,9 +7,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
   min-height: 100vh;
+  min-width: 40%;
+  overflow: auto;
 }
 .App-header {
   text-align: center;
+}
+.App-container {
+  max-width: 100%;
 }
 
 .App-logo {
@@ -21,7 +26,7 @@
 }
 
 
-input {
+input, textarea {
   display: inline-block;
   padding: 10px;
   margin: 15px 0;

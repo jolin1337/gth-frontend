@@ -1,0 +1,8 @@
+.Activity-type {
+  width: 100%;
+}
+
+.datetime {
+  width: calc(50% - 6px);
+  margin-left: 6px;
+}

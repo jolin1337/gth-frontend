@@ -4,18 +4,22 @@
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.6",
+    "@types/leaflet": "^1.4.3",
     "@types/node": "11.9.4",
     "@types/react": "16.8.4",
     "@types/react-dom": "16.8.2",
     "@types/react-router-dom": "^4.3.1",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "@types/react-select": "^2.0.13",
+    "leaflet": "^1.4.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "react-select": "^2.4.1",
     "typescript": "3.3.3333"
   },
   "scripts": {
