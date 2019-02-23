@@ -10,7 +10,7 @@ interface Props {
 }
 @inject("activityStore", "activityStore")
 @observer
-class CloseActivities extends Component <Props> {
+class CloseActivities extends Component<Props> {
   componentDidMount() {
     const { loadActivities } = this.props.activityStore!;
     loadActivities();
@@ -20,8 +20,10 @@ class CloseActivities extends Component <Props> {
     if (isLoading || !activities.length) return <p>Laddar. ..</p>;
     return (
       <ul>
-        {this.props.activityStore!.activities.map((it : any, idx : number) => (
-          <li key={idx}><Link to={"/activity/" + it.id}>{it.name}</Link></li>
+        {this.props.activityStore!.activities.map((it: any, idx: number) => (
+          <li key={idx}>
+            <Link to={"/activity/" + it.id}>{it.name}</Link>
+          </li>
         ))}
       </ul>
     );
@@ -30,6 +32,9 @@ class CloseActivities extends Component <Props> {
     return (
       <div>
         {this.renderAktivities()}
+        <Link to="/home" className="homeLinks">
+          Gå tillbaka
+        </Link>
       </div>
     );
   }
