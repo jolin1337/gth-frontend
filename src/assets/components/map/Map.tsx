@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import L from 'leaflet';
-import './leaflet.css';
-import Creatable from 'react-select/lib/Creatable';
+import React, { Component } from "react";
+import L from "leaflet";
+import "./leaflet.css";
+import Creatable from "react-select/lib/Creatable";
 
 interface Props {
   editable: boolean;
+  onChange: (val: any) => any;
 }
 interface State {
   value: string;
@@ -12,67 +13,90 @@ interface State {
 }
 
 const styles = {
-  option: (styles : object) => ({ ...styles, color: "black" })
+  option: (styles: object) => ({ ...styles, color: "black" })
 };
 
-class Map extends Component <Props, State> {
-  constructor (props : Props) {
+class Map extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      value: '',
+      value: "",
       options: []
-    }
+    };
   }
-  componentDidMount = () => {
-    var map = L.map('map').setView([62.393801, 17.283699], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  componentDidMount() {
+    var map = L.map("map").setView([62.393801, 17.283699], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    map.on('click', (event) => this.onMapClick(map, event));
-
+    map.on("click", event => this.onMapClick(map, event));
   }
-  onMapClick = (map : any, event : any) => {
-    map.eachLayer((l : any) => l.options.radius && map.removeLayer(l));
+
+  onMapClick = (map: any, event: any) => {
+    map.eachLayer((l: any) => l.options.radius && map.removeLayer(l));
     const { lat, lng } = event.latlng;
-    let layer = L.circle([lat, lng], { radius: 10 }).bindPopup('Coordinate: ' + lat + ',' + lng).addTo(map);
+    let layer = L.circle([lat, lng], { radius: 10 })
+      .bindPopup("Coordinate: " + lat + "," + lng)
+      .addTo(map);
 
-    this.setState({ ...this.state, value: lat + ',' + lng });
-  }
-  updateValue = (value : string) => {
-    this.setState({ ...this.state, value });
-  }
-  queryMeetingPoint = (value : string) => {
-    if (value.length < 2) { return; }
-    fetch('https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + value)
-    .then((j : any) => j.json())
-    .then((points : any[]) => points.map((point : any) => {
-      return {
-        label: point.display_name,
-        value: point.lat + ',' + point.lng
-      }
-    }))
-    .then((points : any[]) => {
-      this.setState({ ...this.state, options: points });
-    });
-  }
+    this.setState({ ...this.state, value: lat + "," + lng });
+  };
+
+  updateValue = (value: string) => {
+    this.props.onChange(this.state.value);
+    this.setState({ value });
+  };
+
+  queryMeetingPoint = (value: string) => {
+    if (value.length < 2) {
+      return;
+    }
+    fetch(
+      "https://nominatim.openstreetmap.org/search?format=json&limit=5&q=" +
+        value
+    )
+      .then((j: any) => j.json())
+      .then((points: any[]) =>
+        points.map((point: any) => {
+          return {
+            label: point.display_name,
+            value: point.lat + "," + point.lng
+          };
+        })
+      )
+      .then((points: any[]) => {
+        this.setState({ ...this.state, options: points });
+      });
+  };
+
   renderEditableContent = () => {
     return (
       <React.Fragment>
         <label htmlFor="meetingPoint">Meeting point</label>
-        <Creatable id="meetingPoint" value={this.state.value} onInputChange={this.queryMeetingPoint} onChange={this.updateValue}
-          options={this.state.options} styles={styles} />
+        <Creatable
+          id="meetingPoint"
+          value={this.state.value}
+          onInputChange={this.queryMeetingPoint}
+          onChange={this.updateValue}
+          options={this.state.options}
+          styles={styles}
+        />
       </React.Fragment>
     );
-  }
-  render = () => {
-    const { editable } = this.props;
+  };
+
+  render() {
+    const { editable, onChange } = this.props;
+
     return (
       <div>
         {editable && this.renderEditableContent()}
-        <div id="map" style={{ height: '250px', width: '100%', zIndex: 0 }}></div>
+        <div id="map" style={{ height: "250px", width: "100%", zIndex: 0 }} />
       </div>
-    )
+    );
   }
 }
 

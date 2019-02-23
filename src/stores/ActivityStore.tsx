@@ -21,6 +21,20 @@ class ActivityStore {
     this.activities = activities;
     this.isLoading = false;
   };
+
+  @action
+  public addActivity = async (activity: any) => {
+    const addedActivity = await fetch("https://httpbin.org/post", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(activity)
+    });
+    console.log("addedActivity", addedActivity);
+    this.activities.push(activity);
+  };
 }
 
 const store = new ActivityStore();
